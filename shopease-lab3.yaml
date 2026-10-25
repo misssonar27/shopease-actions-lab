@@ -1,0 +1,24 @@
+name: ShopEase CI Pipeline - LAB 3
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shopease-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test ShopEase Application
+    runs-on: ubuntu-latest
